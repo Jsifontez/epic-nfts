@@ -37,9 +37,6 @@ contract MyEpicNFT is ERC721URIStorage {
 
     // We use a event to get the token id
     event NewEpicNFTMinted(address sender, uint256 tokenId);
-    // Use the event initialize the current nft minted
-    event MintedNFTSoFar(uint256 tokenId);
-
 
     // Create a function to randomly pick a word from each array
     function pickRandomFirstWord(uint256 tokenId) public view returns (string memory) {
@@ -78,9 +75,8 @@ contract MyEpicNFT is ERC721URIStorage {
     }
 
     // a function to call in web client to know the minted nft
-    function nftMintedSoFat () public {
-        console.log("emiting the event created in line 41");
-        emit MintedNFTSoFar(_tokenIds.current());
+    function nftMintedSoFat () public view returns (uint256) {
+        return _tokenIds.current();
     }
 
     // A function out user will hit to get ther NFT
