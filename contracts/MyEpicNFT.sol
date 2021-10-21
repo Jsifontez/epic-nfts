@@ -80,6 +80,8 @@ contract MyEpicNFT is ERC721URIStorage {
         // Get the current tokenId, this starts at 0.
         uint256 newItemId = _tokenIds.current();
 
+        require(newItemId < 51, "The minted operation has reached the limit");
+
         // We go and randomly grab one word from each of the three arrays.
         string memory first = pickRandomFirstWord(newItemId);
         string memory second = pickRandomSecondWord(newItemId);
